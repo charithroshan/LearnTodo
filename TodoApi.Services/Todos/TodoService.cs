@@ -1,8 +1,8 @@
 ﻿using TodoApi.Model;
 
-namespace TodoApi.Services
+namespace TodoApi.Services.Todos
 {
-    public class TodoService
+    public class TodoService : ITodoRepository
     {
         public List<Todo> AllTodos()
         {
@@ -45,6 +45,11 @@ namespace TodoApi.Services
             todos.Add(todo3);
 
             return (todos);
+        }
+
+        public Todo GetTodo(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

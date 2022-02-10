@@ -1,4 +1,6 @@
-﻿namespace TodoApi.Model
+﻿using TodoApi.Models;
+
+namespace TodoApi.Model
 {
     public class Todo
     {
@@ -9,5 +11,7 @@
         public DateTime Due { get; set; }
         public TodoStatus Status { get; set; }
 
+        public int AuthorId { get; set; }
+        public Author Author { get; set; }
     }
 }

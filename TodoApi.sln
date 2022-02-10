@@ -5,9 +5,11 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApi", "TodoApi\TodoApi.csproj", "{54C35EF1-3C3E-4C08-9C2F-140FFF1F6E84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.Models", "TodoApi.Models\TodoApi.Models.csproj", "{141D3757-1095-4AB5-A8E1-B4256618D694}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApi.Models", "TodoApi.Models\TodoApi.Models.csproj", "{141D3757-1095-4AB5-A8E1-B4256618D694}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.Services", "TodoApi.Services\TodoApi.Services.csproj", "{B744AC6D-C4C4-4066-BD78-096285CD45A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApi.Services", "TodoApi.Services\TodoApi.Services.csproj", "{B744AC6D-C4C4-4066-BD78-096285CD45A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.DataAccess", "TodoApi.DataAccess\TodoApi.DataAccess.csproj", "{3D6B99DB-4014-48A6-8B58-E3283279312B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{B744AC6D-C4C4-4066-BD78-096285CD45A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B744AC6D-C4C4-4066-BD78-096285CD45A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B744AC6D-C4C4-4066-BD78-096285CD45A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D6B99DB-4014-48A6-8B58-E3283279312B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D6B99DB-4014-48A6-8B58-E3283279312B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D6B99DB-4014-48A6-8B58-E3283279312B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D6B99DB-4014-48A6-8B58-E3283279312B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

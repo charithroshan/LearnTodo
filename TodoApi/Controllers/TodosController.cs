@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TodoApi.Services;
+using TodoApi.Services.Todos;
 
 namespace TodoApi.Controllers
 {
@@ -8,24 +8,29 @@ namespace TodoApi.Controllers
     [ApiController]
     public class TodosController : ControllerBase
     {
-        private TodoService _todoService;
+        private readonly ITodoRepository _todoService;
 
-        public TodosController()
+        public TodosController(ITodoRepository repository)
         {
-            _todoService = new TodoService();
+            _todoService = repository;
         }
 
-        [HttpGet("{Id?}")]
-        public IActionResult GetTodo(int? Id)
+        [HttpGet]
+        public IActionResult GetAllTodo()
         {
             var mytodos = _todoService.AllTodos();
-
-            if(Id == null)
-                return Ok(mytodos);
-            mytodos= mytodos.Where(todo => todo.Id == Id).ToList();
-
             return Ok(mytodos);
         }
         
+        [HttpGet("{id}")]
+        public IActionResult GetTodo(int id)
+        {
+            var myTodo = _todoService.GetTodo(id);
+
+            if(myTodo == null)
+                return NotFound();
+
+            return Ok(myTodo);
+        }
     }
 }

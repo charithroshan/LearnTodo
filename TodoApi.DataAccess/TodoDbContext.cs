@@ -23,10 +23,10 @@ namespace TodoApi.DataAccess
         {
             modelBuilder.Entity<Author>().HasData(new Author[]
             {
-                new Author { Id = 1, FullName = "John Doe"},
-                new Author { Id = 2, FullName = "Willim Max "},
-                new Author{ Id = 3, FullName = "Charith Roshan"},
-                new Author{Id = 4, FullName = "Allon Mark "}
+                new Author { Id = 1, FullName = "John Doe", AddressNo = "No. 100/A", Street = "Street 01", City = "Colombo 01", JobRole = "Developer"},
+                new Author { Id = 2, FullName = "Willim Max", AddressNo = "No. 101/B", Street = "Street 02", City = "Colombo 02", JobRole = "System Engineer"},
+                new Author{ Id = 3, FullName = "Charith Roshan", AddressNo = "No. 102/C", Street = "Street 03", City = "Colombo 03", JobRole = "Developer"},
+                new Author{Id = 4, FullName = "Allon Mark ", AddressNo = "No. 103/D", Street = "Street 04", City = "Colombo 04", JobRole = "QA"}
             });
 
             modelBuilder.Entity<Todo>().HasData(new Todo[]

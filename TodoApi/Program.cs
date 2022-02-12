@@ -16,7 +16,7 @@ builder.Services.AddControllers(optins =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<ITodoRepository, TodoSqlServerService>();
 builder.Services.AddScoped<IAuthorRepository, AuthorSqlServerService>();
 
@@ -27,6 +27,17 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+else
+{
+    app.UseExceptionHandler(app =>
+    {
+        app.Run(async context =>
+        {
+            context.Response.StatusCode = 500;
+            await context.Response.WriteAsync("There was an error in the server. Pleas contact developer.");
+        });
+    });
 }
 
 app.UseHttpsRedirection();

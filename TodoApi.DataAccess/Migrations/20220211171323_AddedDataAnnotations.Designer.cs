@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TodoApi.DataAccess;
 
@@ -11,9 +12,10 @@ using TodoApi.DataAccess;
 namespace TodoApi.DataAccess.Migrations
 {
     [DbContext(typeof(TodoDbContext))]
-    partial class TodoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220211171323_AddedDataAnnotations")]
+    partial class AddedDataAnnotations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,9 +65,9 @@ namespace TodoApi.DataAccess.Migrations
                         {
                             Id = 1,
                             AuthorId = 1,
-                            Created = new DateTime(2022, 2, 13, 1, 16, 51, 618, DateTimeKind.Local).AddTicks(2601),
+                            Created = new DateTime(2022, 2, 11, 22, 43, 23, 311, DateTimeKind.Local).AddTicks(20),
                             Description = "Learn C# from tutorial",
-                            Due = new DateTime(2022, 2, 18, 1, 16, 51, 618, DateTimeKind.Local).AddTicks(2610),
+                            Due = new DateTime(2022, 2, 16, 22, 43, 23, 311, DateTimeKind.Local).AddTicks(29),
                             Status = 0,
                             Title = "Learn C#"
                         },
@@ -73,9 +75,9 @@ namespace TodoApi.DataAccess.Migrations
                         {
                             Id = 2,
                             AuthorId = 1,
-                            Created = new DateTime(2022, 2, 13, 1, 16, 51, 618, DateTimeKind.Local).AddTicks(2615),
+                            Created = new DateTime(2022, 2, 11, 22, 43, 23, 311, DateTimeKind.Local).AddTicks(34),
                             Description = "Learn bootstrap from tutorial",
-                            Due = new DateTime(2022, 2, 20, 1, 16, 51, 618, DateTimeKind.Local).AddTicks(2615),
+                            Due = new DateTime(2022, 2, 18, 22, 43, 23, 311, DateTimeKind.Local).AddTicks(35),
                             Status = 0,
                             Title = "Learn bootstrap"
                         },
@@ -83,9 +85,9 @@ namespace TodoApi.DataAccess.Migrations
                         {
                             Id = 3,
                             AuthorId = 2,
-                            Created = new DateTime(2022, 2, 13, 1, 16, 51, 618, DateTimeKind.Local).AddTicks(2617),
+                            Created = new DateTime(2022, 2, 11, 22, 43, 23, 311, DateTimeKind.Local).AddTicks(36),
                             Description = "Learn Anguler from tutorial",
-                            Due = new DateTime(2022, 2, 16, 1, 16, 51, 618, DateTimeKind.Local).AddTicks(2617),
+                            Due = new DateTime(2022, 2, 14, 22, 43, 23, 311, DateTimeKind.Local).AddTicks(37),
                             Status = 0,
                             Title = "Learn Anguler"
                         });
@@ -114,11 +116,6 @@ namespace TodoApi.DataAccess.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<string>("JobRole")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<string>("Street")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -135,7 +132,6 @@ namespace TodoApi.DataAccess.Migrations
                             AddressNo = "No. 100/A",
                             City = "Colombo 01",
                             FullName = "John Doe",
-                            JobRole = "Developer",
                             Street = "Street 01"
                         },
                         new
@@ -144,7 +140,6 @@ namespace TodoApi.DataAccess.Migrations
                             AddressNo = "No. 101/B",
                             City = "Colombo 02",
                             FullName = "Willim Max",
-                            JobRole = "System Engineer",
                             Street = "Street 02"
                         },
                         new
@@ -153,7 +148,6 @@ namespace TodoApi.DataAccess.Migrations
                             AddressNo = "No. 102/C",
                             City = "Colombo 03",
                             FullName = "Charith Roshan",
-                            JobRole = "Developer",
                             Street = "Street 03"
                         },
                         new
@@ -162,7 +156,6 @@ namespace TodoApi.DataAccess.Migrations
                             AddressNo = "No. 103/D",
                             City = "Colombo 04",
                             FullName = "Allon Mark ",
-                            JobRole = "QA",
                             Street = "Street 04"
                         });
                 });

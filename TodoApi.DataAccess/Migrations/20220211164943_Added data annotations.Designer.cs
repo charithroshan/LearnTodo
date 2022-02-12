@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TodoApi.DataAccess;
 
@@ -11,9 +12,10 @@ using TodoApi.DataAccess;
 namespace TodoApi.DataAccess.Migrations
 {
     [DbContext(typeof(TodoDbContext))]
-    partial class TodoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220211164943_Added data annotations")]
+    partial class Addeddataannotations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,8 +40,7 @@ namespace TodoApi.DataAccess.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Due")
                         .HasColumnType("datetime2");
@@ -49,8 +50,7 @@ namespace TodoApi.DataAccess.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -63,9 +63,9 @@ namespace TodoApi.DataAccess.Migrations
                         {
                             Id = 1,
                             AuthorId = 1,
-                            Created = new DateTime(2022, 2, 13, 1, 16, 51, 618, DateTimeKind.Local).AddTicks(2601),
+                            Created = new DateTime(2022, 2, 11, 22, 19, 43, 634, DateTimeKind.Local).AddTicks(4877),
                             Description = "Learn C# from tutorial",
-                            Due = new DateTime(2022, 2, 18, 1, 16, 51, 618, DateTimeKind.Local).AddTicks(2610),
+                            Due = new DateTime(2022, 2, 16, 22, 19, 43, 634, DateTimeKind.Local).AddTicks(4888),
                             Status = 0,
                             Title = "Learn C#"
                         },
@@ -73,9 +73,9 @@ namespace TodoApi.DataAccess.Migrations
                         {
                             Id = 2,
                             AuthorId = 1,
-                            Created = new DateTime(2022, 2, 13, 1, 16, 51, 618, DateTimeKind.Local).AddTicks(2615),
+                            Created = new DateTime(2022, 2, 11, 22, 19, 43, 634, DateTimeKind.Local).AddTicks(4896),
                             Description = "Learn bootstrap from tutorial",
-                            Due = new DateTime(2022, 2, 20, 1, 16, 51, 618, DateTimeKind.Local).AddTicks(2615),
+                            Due = new DateTime(2022, 2, 18, 22, 19, 43, 634, DateTimeKind.Local).AddTicks(4897),
                             Status = 0,
                             Title = "Learn bootstrap"
                         },
@@ -83,9 +83,9 @@ namespace TodoApi.DataAccess.Migrations
                         {
                             Id = 3,
                             AuthorId = 2,
-                            Created = new DateTime(2022, 2, 13, 1, 16, 51, 618, DateTimeKind.Local).AddTicks(2617),
+                            Created = new DateTime(2022, 2, 11, 22, 19, 43, 634, DateTimeKind.Local).AddTicks(4898),
                             Description = "Learn Anguler from tutorial",
-                            Due = new DateTime(2022, 2, 16, 1, 16, 51, 618, DateTimeKind.Local).AddTicks(2617),
+                            Due = new DateTime(2022, 2, 14, 22, 19, 43, 634, DateTimeKind.Local).AddTicks(4898),
                             Status = 0,
                             Title = "Learn Anguler"
                         });
@@ -99,30 +99,9 @@ namespace TodoApi.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("AddressNo")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("JobRole")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Street")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -132,55 +111,34 @@ namespace TodoApi.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            AddressNo = "No. 100/A",
-                            City = "Colombo 01",
-                            FullName = "John Doe",
-                            JobRole = "Developer",
-                            Street = "Street 01"
+                            FullName = "John Doe"
                         },
                         new
                         {
                             Id = 2,
-                            AddressNo = "No. 101/B",
-                            City = "Colombo 02",
-                            FullName = "Willim Max",
-                            JobRole = "System Engineer",
-                            Street = "Street 02"
+                            FullName = "Willim Max "
                         },
                         new
                         {
                             Id = 3,
-                            AddressNo = "No. 102/C",
-                            City = "Colombo 03",
-                            FullName = "Charith Roshan",
-                            JobRole = "Developer",
-                            Street = "Street 03"
+                            FullName = "Charith Roshan"
                         },
                         new
                         {
                             Id = 4,
-                            AddressNo = "No. 103/D",
-                            City = "Colombo 04",
-                            FullName = "Allon Mark ",
-                            JobRole = "QA",
-                            Street = "Street 04"
+                            FullName = "Allon Mark "
                         });
                 });
 
             modelBuilder.Entity("TodoApi.Model.Todo", b =>
                 {
                     b.HasOne("TodoApi.Models.Author", "Author")
-                        .WithMany("Todos")
+                        .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Author");
-                });
-
-            modelBuilder.Entity("TodoApi.Models.Author", b =>
-                {
-                    b.Navigation("Todos");
                 });
 #pragma warning restore 612, 618
         }

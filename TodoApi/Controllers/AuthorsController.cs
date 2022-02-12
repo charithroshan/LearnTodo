@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TodoApi.Services.Authors;
+using TodoApi.Services.ViewModels;
 
 namespace TodoApi.Controllers
 {
@@ -9,15 +11,21 @@ namespace TodoApi.Controllers
     public class AuthorsController : ControllerBase
     {
         private readonly IAuthorRepository _service;
-        public AuthorsController(IAuthorRepository service)
+        private readonly IMapper _mapper;
+        public AuthorsController(IAuthorRepository service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
         [HttpGet]
-        public IActionResult GetAuthors()
+        public ActionResult<ICollection<AuthorViewModel>> GetAllAuthors(string? job, string? search)
         {
-            var authors = _service.GetAllAuthors();
-            return Ok(authors);
+            
+            var authors = _service.GetAllAuthors(job, search);
+
+            var mappedAuthors = _mapper.Map<ICollection<AuthorViewModel>>(authors);
+
+            return Ok(mappedAuthors);
         }
 
         [HttpGet("{id}")]
@@ -28,7 +36,9 @@ namespace TodoApi.Controllers
             if(author == null)
                 return NotFound();
 
-            return Ok(author);
+            var mappedAuthor = _mapper.Map<AuthorViewModel>(author);
+
+            return Ok();
         }
         
     }
